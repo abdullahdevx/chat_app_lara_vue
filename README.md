@@ -24,4 +24,4 @@ Then npm run serve!<br>
 
 
 THIS WHOLE PROJECT WAS COMPLETELY DEVELOPED BY ME!<br>
-*** THANKS FOR READING ***<br>
+<br><br>*** THANKS FOR READING ***<br>
