@@ -133,7 +133,7 @@ watch: {
         {
           this.message = '';
           this.$emit('refreshChatList');
-          this.loadChat();
+          // this.loadChat();
         }
     },
   },
@@ -147,12 +147,11 @@ async mounted()
         {
           this.loadSelectedConversationData();
         }
-       
-
+      
         window.Echo = new Echo({
             broadcaster: 'pusher',
-            key: 'f24fedde7d14c92c0393',
-            cluster: 'ap1',
+            key: 'b6a4d2642213ed1fa360',
+            cluster: 'ap2',
             forceTLS: true,
         });
 
@@ -162,14 +161,15 @@ async mounted()
             if(this.chatId == e.conversation_id)
             {
             this.loadChat();
+            // this.chatData.push(e.conversation_id);
             }
         });
        
 },
 
-async beforeUnmount() {
-    // Stop listening to the channel
-    window.Echo.leave('chat');
-  },
+// async beforeUnmount() {
+//     // Stop listening to the channel
+//     window.Echo.leave('chat');
+//   },
 }
 </script>

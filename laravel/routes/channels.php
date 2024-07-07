@@ -25,4 +25,7 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 //     // return (int) $user->id === (int) $conversationId;
 //     return $user;
 
+Broadcast::channel('chat', function ($user) {
+    return true; // Or implement your own authorization logic
+});
 // });
