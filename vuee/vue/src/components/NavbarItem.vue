@@ -93,9 +93,10 @@ import { useMyStore } from '@/store/navbar.js'
     
     // If the request is successful, clear localStorage, update login state, and redirect
     localStorage.clear();
-    this.$router.push({ name: 'Main' });
     const userStore = useMyStore();
     userStore.loginState = false;
+    window.location.reload();
+
   } catch (error) {
     console.error('Logout failed:', error);
   }
@@ -104,8 +105,4 @@ import { useMyStore } from '@/store/navbar.js'
     }
   }
   </script>
-  
-  <!-- Add "scoped" attribute to limit CSS to this component only -->
-  <style scoped>
-  </style>
   

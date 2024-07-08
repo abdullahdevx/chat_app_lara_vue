@@ -49,6 +49,7 @@
 <script>
 import axios from 'axios'
 import Echo from 'laravel-echo';
+import { useMyStore } from '@/store/navbar.js'
 window.Pusher = require('pusher-js');
 
 export default {
@@ -133,13 +134,16 @@ watch: {
         {
           this.message = '';
           this.$emit('refreshChatList');
-          // this.loadChat();
         }
     },
   },
 
 async mounted()
 { 
+  const userStore = useMyStore();
+
+  if(userStore.loginState == true)
+{
   setTimeout(() => {
       this.loadChat();
     }, 100);
@@ -161,10 +165,9 @@ async mounted()
             if(this.chatId == e.conversation_id)
             {
             this.loadChat();
-            // this.chatData.push(e.conversation_id);
             }
         });
-       
+}
 },
 
 // async beforeUnmount() {

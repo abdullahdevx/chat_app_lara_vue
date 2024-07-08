@@ -42,7 +42,7 @@
           </div>
           <div class="hidden lg:col-span-2 lg:block">
             <div class="w-full">
-              <ChatBox :userId="userId" @refreshChatList="handleRefreshChatList" :chatId="chatId" :key="chatId"/>
+              <ChatBox  :userId="userId" @refreshChatList="handleRefreshChatList" :chatId="chatId" :key="chatId"/>
             </div>
           </div>
         </div>
@@ -137,8 +137,17 @@ import ChatList from './ChatList.vue'
         async mounted()
         {
           let userToken = localStorage.getItem('user-token');
+
+
+          if(!userToken)
+        {
+          this.$router.push({name:'SignUp'});
+        }
+        
+        else
+        {
           this.userToken = userToken.replace(/^"(.*)"$/, '$1');
-            let result = await axios.get("http://127.0.0.1:8000/api/getuserid",
+          let result = await axios.get("http://127.0.0.1:8000/api/getuserid",
           {
       headers:{
      'Authorization': `Bearer ${this.userToken}`
@@ -148,6 +157,7 @@ import ChatList from './ChatList.vue'
     {
         this.userId = result.data.id;
     }
+  }
         },
     }
       
